@@ -1,0 +1,13 @@
+test.dominoes.goolagoon.org {
+    @api path /api*
+    reverse_proxy @api dominoes-test-backend:4000
+
+    reverse_proxy dominoes-test-frontend:3000
+}
+
+dominoes.goolagoon.org {
+    @api path /api*
+    reverse_proxy @api dominoes-prod-backend:4000
+
+    reverse_proxy dominoes-prod-frontend:3000
+}

@@ -19,7 +19,6 @@ jobs:
           script: |
             cd /opt/infra
             git pull origin prod
-
             cd caddy
             docker compose up -d
             docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile || docker compose restart caddy
