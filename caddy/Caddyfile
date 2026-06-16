@@ -11,3 +11,17 @@ dominoes.goolagoon.org {
 
     reverse_proxy dominoes-prod-frontend:3000
 }
+
+test.yahtzus.goolagoon.org {
+    @api path /api*
+    reverse_proxy @api yahtzus-test-backend:4010
+
+    reverse_proxy yahtzus-test-frontend:3010
+}
+
+yahtzus.goolagoon.org {
+    @api path /api*
+    reverse_proxy @api yahtzus-prod-backend:4010
+
+    reverse_proxy yahtzus-prod-frontend:3010
+}

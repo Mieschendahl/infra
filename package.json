@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "push-prod": "git checkout prod && git merge develop && git push && git checkout develop"
+    "push-prod": "git push origin develop && git checkout prod && git merge develop && git push && git checkout develop"
   },
   "keywords": [],
   "author": "",
