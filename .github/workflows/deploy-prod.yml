@@ -17,9 +17,16 @@ jobs:
           username: deploy
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
+            set -e
+
             cd /opt/infra
             git pull origin prod
+
             cd caddy
-            docker compose up -d
-            docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile || docker compose restart caddy
+
+            docker compose up -d --force-recreate
+
+            docker compose exec -T caddy caddy validate --config /etc/caddy/Caddyfile
+            docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile
+
             docker compose ps
