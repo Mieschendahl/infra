@@ -25,3 +25,10 @@ yahtzus.goolagoon.org {
 
     reverse_proxy yahtzus-prod-frontend:3010
 }
+
+jubilaeum.humanflow.de {
+    @api path /api*
+    reverse_proxy @api humanflow-jubilaeum-backend:4020
+
+    reverse_proxy humanflow-jubilaeum-frontend:3020
+}
